@@ -3,71 +3,41 @@ import 'dart:convert';
 class MoviesModel {
   final num id;
   final String title;
-  final bool adult;
-  final String backdropPath;
-  final List genreIds;
-  final String originalLanguage;
-  final String originalTitle;
-  final String overview;
-  final double popularity;
+  final String releaseDate;
   final String posterPath;
-  final DateTime releaseDate;
-  final bool video;
-  final double voteAverage;
-  final int voteCount;
+  final List<int> genres;
+  final bool favorite;
+  MoviesModel({
+    required this.id,
+    required this.title,
+    required this.releaseDate,
+    required this.posterPath,
+    required this.genres,
+    required this.favorite,
+  });
 
-  MoviesModel(
-      this.id,
-      this.title,
-      this.adult,
-      this.backdropPath,
-      this.genreIds,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.releaseDate,
-      this.video,
-      this.voteAverage,
-      this.voteCount,
-      );
+
+ 
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
-      'adult': adult,
-      'backdropPath': backdropPath,
-      'genreIds': genreIds,
-      'originalLanguage': originalLanguage,
-      'originalTitle': originalTitle,
-      'overview': overview,
-      'popularity': popularity,
-      'posterPath': posterPath,
-      'releaseDate': releaseDate.millisecondsSinceEpoch,
-      'video': video,
-      'voteAverage': voteAverage,
-      'voteCount': voteCount,
+      'release_date': releaseDate,
+      'poster_path': posterPath,
+      'genre_ids': genres,
+      'favorite': favorite,
     };
   }
 
   factory MoviesModel.fromMap(Map<String, dynamic> map) {
     return MoviesModel(
-      map['id'] ?? 0,
-      map['title'] ?? '',
-      map['adult'] ?? false,
-      map['backdropPath'] ?? '',
-      List.from(map['genreIds']),
-      map['originalLanguage'] ?? '',
-      map['originalTitle'] ?? '',
-      map['overview'] ?? '',
-      map['popularity']?.toDouble() ?? 0.0,
-      map['posterPath'] ?? '',
-      DateTime.fromMillisecondsSinceEpoch(map['releaseDate']),
-      map['video'] ?? false,
-      map['voteAverage']?.toDouble() ?? 0.0,
-      map['voteCount']?.toInt() ?? 0,
+      id: map['id'] ?? 0,
+      title: map['title'] ?? '',
+      releaseDate: map['release_date'] ?? '',
+      posterPath: map['poster_path'] ?? '',
+      genres: List<int>.from(map['genre_ids']),
+      favorite: map['favorite'] ?? false,
     );
   }
 
