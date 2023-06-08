@@ -1,3 +1,4 @@
+import 'package:api_movies/src/common/ulrs/ulrs.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class PopularMovies extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    'https://image.tmdb.org/t/p/original/${movies[index].posterPath}',
+                    Urls.baseImage + movies[index].posterPath,
                     height: Get.height * 0.25,
                     width: Get.width * 0.32,
                     fit: BoxFit.cover,
