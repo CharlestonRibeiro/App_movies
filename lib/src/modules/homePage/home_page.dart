@@ -1,32 +1,30 @@
+import 'package:api_movies/src/common/colors/custom_colors.dart';
+import 'package:api_movies/src/modules/homePage/components/popular_movies.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-
+import 'package:get/get_instance/get_instance.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
-  final moviesController = Get.find< HomeController>();
+  final HomeController moviesController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
-   // final moviesController = controller;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
+      backgroundColor: CustomColors.background,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Mais populares',
+                    style: Theme.of(context).textTheme.titleLarge),
+            Expanded(child: PopularMovies()),
+          ],
+        ),
       ),
-      body: Obx(() { 
-              return ListView.builder(
-                itemCount: moviesController.movies.length ,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(moviesController.movies[index].title),
-                  );
-                });
-          }
-        )
     );
   }
 }

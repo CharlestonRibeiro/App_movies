@@ -1,3 +1,4 @@
+import 'package:api_movies/src/common/themeData/custom_theme_data.dart';
 import 'package:api_movies/src/modules/homePage/home_bindings.dart';
 import 'package:api_movies/src/modules/homePage/home_page.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,12 @@ class AppMovies extends StatelessWidget {
     return GetMaterialApp(
       title: 'AppMovies',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: customThemeData(),
       getPages: [
         GetPage(
           name: '/', 
           binding: HomeBindings(),
-          page: () =>  HomePage() 
+          page: () =>   HomePage() 
           ),
       ],
     );
