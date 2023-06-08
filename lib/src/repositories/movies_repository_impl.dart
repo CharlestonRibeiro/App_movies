@@ -1,5 +1,4 @@
 import 'package:api_movies/src/common/ulrs/ulrs.dart';
-import 'package:api_movies/src/models/movies_model.dart';
 import 'package:api_movies/src/services/custom_exception.dart';
 import 'package:api_movies/src/services/dio_client.dart';
 import 'package:get/instance_manager.dart';
@@ -10,10 +9,10 @@ class MoviesRepositoryImpl implements MoviesRepository {
   final dioClient = Get.put(DioClient());
   final customException = Get.put(CustomException());
 
-
   @override
   Future getPopularMovies() async {
-    final popularMovies = await dioClient.get( Urls.baseUrl + Urls.urlPopularMovies);
+    final popularMovies =
+        await dioClient.get(Urls.baseUrl + Urls.urlPopularMovies);
 
     if (customException.responseIsValid(popularMovies) == false) {
       return [];
@@ -27,9 +26,17 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }
 
   @override
-  Future<List<MoviesModel>> getTopRetadeMovies() async {
-    final topRetadeMovies = await dioClient.get(Urls.baseUrl + Urls.urlTopRetadeMovies);
-
-    return topRetadeMovies;
+  Future getTopRetadeMovies() async {
+    final topRetadeMovies =
+        await dioClient.get(Urls.baseUrl + Urls.urlTopRetadeMovies);
+    if (customException.responseIsValid(topRetadeMovies) == false) {
+      return [];
+    } else {
+      if (topRetadeMovies.data != null) {
+        return topRetadeMovies.data['results'];
+      } else {
+        return [];
+      }
+    }
   }
 }

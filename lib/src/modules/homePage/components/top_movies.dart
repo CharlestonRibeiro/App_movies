@@ -3,15 +3,16 @@ import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PopularMovies extends StatelessWidget {
-  PopularMovies({Key? key}) : super(key: key);
+class TopMovies extends StatelessWidget {
+
+  TopMovies({ super.key });
 
   final HomeController moviesController = Get.find<HomeController>();
 
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      final movies = moviesController.popularMovies;
+   @override
+   Widget build(BuildContext context) {
+       return Obx(() {
+      final movies = moviesController.topMovies;
       return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,

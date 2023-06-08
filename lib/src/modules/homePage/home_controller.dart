@@ -4,37 +4,65 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final movies = [].obs;
+  final popularMovies = [].obs;
+  final topMovies = [].obs;
   final _moviesRepository = Get.find<MoviesRepositoryImpl>();
-
 
   @override
   void onReady() async {
+    Get.snackbar(
+      'Bem-vindo!!!',
+      'Carregando...',
+      icon: const Icon(Icons.cached_outlined),
+    );
+
     searchPopularMovies();
+    searchTopMovies();
     super.onReady();
   }
 
   Future searchPopularMovies() async {
-    Get.snackbar(
-        'Filmes Populares',
-        'Carregando',
-        icon: const Icon(Icons.cached_outlined),
-    );
 
     try {
-      final moviesData = await _moviesRepository.getPopularMovies();
-      final movieList = (moviesData as List)
+      final popularMoviesData = await _moviesRepository.getPopularMovies();
+      final popularMoviesList = (popularMoviesData as List)
           .map((movieMap) => MoviesModel.fromMap(movieMap))
           .toList();
-      movies.assignAll(movieList);
+      popularMovies.assignAll(popularMoviesList);
 
       Get.snackbar(
-          'Filmes Populares',
-          'Carregado com sucesso!!!',
-          icon: const Icon(Icons.cached_outlined),
-          duration: const Duration(seconds: 3),      
+        'Filmes Populares',
+        'Carregado com sucesso!!!',
+        icon: const Icon(Icons.cached_outlined),
+        duration: const Duration(seconds: 3),
       );
+    } catch (e) {
+      Get.snackbar(
+        'Filmes Populares',
+        'Erro',
+        snackPosition: SnackPosition.TOP,
+        icon: const Icon(Icons.cached_outlined),
+        duration: const Duration(seconds: 3),
+      );
+    }
+  }
 
+  Future searchTopMovies() async {
+
+    try {
+      final topMoviesData = await _moviesRepository.getTopRetadeMovies();
+      final topMoviesList = (topMoviesData as List)
+          .map((movieMap) => MoviesModel.fromMap(movieMap))
+          .toList();
+          
+      topMovies.assignAll(topMoviesList);
+
+      Get.snackbar(
+        'Top Filmes',
+        'Carregado com sucesso!!!',
+        icon: const Icon(Icons.cached_outlined),
+        duration: const Duration(seconds: 3),
+      );
     } catch (e) {
       Get.snackbar(
         'Filmes Populares',
