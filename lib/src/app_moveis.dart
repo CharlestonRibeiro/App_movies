@@ -10,6 +10,7 @@ class AppMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'AppMovies',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -18,7 +19,7 @@ class AppMovies extends StatelessWidget {
         GetPage(
           name: '/', 
           binding: HomeBindings(),
-          page: () => const HomePage() 
+          page: () =>  HomePage() 
           ),
       ],
     );
