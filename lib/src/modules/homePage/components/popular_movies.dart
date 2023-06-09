@@ -21,7 +21,6 @@ class PopularMovies extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 SizedBox(
                   height: Get.height * 0.04,
                 ),
@@ -30,15 +29,15 @@ class PopularMovies extends StatelessWidget {
                   child: Image.network(
                     Urls.baseImage + movies[index].posterPath,
                     height: Get.height * 0.25,
-                    width: Get.width * 0.32,
-                    fit: BoxFit.cover,
+                  //  width: Get.width * 0.32,
+                    fit: BoxFit.fill,
                   ),
                 ),
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
                 SizedBox(
-                  width: Get.width * 0.32,
+                  width: Get.width * 0.35,
                   child: Text(
                     movies[index].title,
                     style: Theme.of(context).textTheme.titleMedium,

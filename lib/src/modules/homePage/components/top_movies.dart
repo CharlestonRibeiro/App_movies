@@ -31,7 +31,7 @@ class TopMovies extends StatelessWidget {
                   child: Image.network(
                     Urls.baseImage + movies[index].posterPath,
                     height: Get.height * 0.25,
-                    width: Get.width * 0.32,
+                   
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -39,7 +39,7 @@ class TopMovies extends StatelessWidget {
                   height: Get.height * 0.02,
                 ),
                 SizedBox(
-                  width: Get.width * 0.32,
+                  width: Get.width * 0.35,
                   child: Text(
                     movies[index].title,
                     style: Theme.of(context).textTheme.titleMedium,
@@ -58,3 +58,6 @@ class TopMovies extends StatelessWidget {
     });
   }
 }
+
+
+                
