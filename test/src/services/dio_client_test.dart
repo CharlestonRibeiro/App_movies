@@ -15,13 +15,15 @@ void main() {
     String urlTest = 'https://teste.com/';
 
     test('expect test getData success', () async {
+      final response = Response(requestOptions: RequestOptions());
+
       when(() => mockDioClient.getData(url: urlTest)).thenAnswer((_) async {
-        return 'response data';
+        return response;
       });
 
       final result = await mockDioClient.getData(url: urlTest);
 
-      expect(result, 'response data');
+      expect(result, response);
     });
 
     test('expect test getData error', () async {
