@@ -6,13 +6,14 @@ import 'package:get/instance_manager.dart';
 import './movies_repository.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
+  
   final dioClient = Get.put(DioClient());
   final customException = Get.put(CustomException());
 
   @override
   Future getPopularMovies() async {
     final popularMovies =
-        await dioClient.get(Urls.baseUrl + Urls.urlPopularMovies);
+        await dioClient.getData(url:  Urls.baseUrl + Urls.urlPopularMovies);
 
     if (customException.responseIsValid(popularMovies) == false) {
       return [];
@@ -28,7 +29,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future getTopRetadeMovies() async {
     final topRetadeMovies =
-        await dioClient.get(Urls.baseUrl + Urls.urlTopRetadeMovies);
+        await dioClient.getData(url: Urls.baseUrl + Urls.urlTopRetadeMovies);
     if (customException.responseIsValid(topRetadeMovies) == false) {
       return [];
     } else {

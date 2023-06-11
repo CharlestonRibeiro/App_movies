@@ -1,3 +1,3 @@
 abstract class IRestClient {
-  Future<dynamic> get(String url);
+  Future getData({required String url});
 }

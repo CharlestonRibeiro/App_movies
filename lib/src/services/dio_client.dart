@@ -12,9 +12,9 @@ class DioClient implements IRestClient {
   );
 
   @override
-  Future get(String url, {Map<String, dynamic>? queryParameters}) async {
+  Future getData({required String url}) async {
      try {
-      final response = await _dio.get(url, queryParameters: queryParameters);
+      final response = await _dio.get(url);
       return response;
     } on DioError catch (e) {
       throw CustomException(errorMessage: e.message);
