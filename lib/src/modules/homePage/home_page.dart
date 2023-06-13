@@ -1,5 +1,6 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/widgets/custom_app_bar.dart';
+import 'package:api_movies/src/common/widgets/custom_bottom_navigation_bar.dart';
 import 'package:api_movies/src/modules/homePage/components/popular_movies.dart';
 import 'package:api_movies/src/modules/homePage/components/top_movies.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
@@ -11,13 +12,14 @@ class HomePage extends StatelessWidget {
 
   final HomeController moviesController = Get.find<HomeController>();
 
+  static const homePage = '/';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.background,
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomAppBar(),
             Padding(
@@ -30,7 +32,7 @@ class HomePage extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(
-                    height: Get.height * 0.45, 
+                    height: Get.height * 0.45,
                     child: PopularMovies(),
                   ),
                   Text(
@@ -38,7 +40,7 @@ class HomePage extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(
-                    height: Get.height * 0.45, 
+                    height: Get.height * 0.45,
                     child: TopMovies(),
                   ),
                 ],
@@ -47,8 +49,10 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
+
 
 

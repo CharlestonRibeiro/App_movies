@@ -1,11 +1,9 @@
 //import 'package:device_preview/device_preview.dart';
 
+import 'package:api_movies/src/common/routes/custom_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:api_movies/src/common/themeData/custom_theme_data.dart';
-import 'package:api_movies/src/modules/homePage/home_bindings.dart';
-import 'package:api_movies/src/modules/homePage/home_page.dart';
 
 
 
@@ -22,13 +20,7 @@ class AppMovies extends StatelessWidget {
       title: 'AppMovies',
       debugShowCheckedModeBanner: false,
       theme: customThemeData(),
-      getPages: [
-        GetPage(
-          name: '/', 
-          binding: HomeBindings(),
-          page: () =>   HomePage() 
-          ),
-      ],
+      getPages: customRoutes,
     );
   }
 }
