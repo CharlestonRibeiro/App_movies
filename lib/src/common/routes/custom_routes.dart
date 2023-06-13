@@ -12,5 +12,5 @@ List<GetPage<dynamic>> customRoutes = [
   GetPage(
       name: FavoriteMoviesPage.favoriteMoviesPage,
       binding: FavoriteMoviesBindings(),
-      page: () => const FavoriteMoviesPage()),
+      page: () =>  FavoriteMoviesPage()),
 ];

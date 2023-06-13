@@ -40,4 +40,19 @@ class MoviesRepositoryImpl implements MoviesRepository {
       }
     }
   }
+  
+  @override
+  Future getGenres() async {
+      final getGenres =
+        await dioClient.getData(url: Urls.urlGenres);
+    if (customException.responseIsValid(getGenres) == false) {
+      return [];
+    } else {
+      if (getGenres.data != null) {
+        return getGenres.data['genres'];
+      } else {
+        return [];
+      }
+    }
+  }
 }
