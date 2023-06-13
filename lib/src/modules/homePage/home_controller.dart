@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final popularMovies = [].obs;
-  final topMovies = [].obs;
+  final popularMovies = <MoviesModel>[].obs;
+  final topMovies = <MoviesModel>[].obs;
   final _moviesRepository = Get.find<MoviesRepositoryImpl>();
 
   @override

@@ -1,8 +1,7 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/widgets/custom_app_bar.dart';
 import 'package:api_movies/src/common/widgets/custom_bottom_navigation_bar.dart';
-import 'package:api_movies/src/modules/homePage/components/popular_movies.dart';
-import 'package:api_movies/src/modules/homePage/components/top_movies.dart';
+import 'package:api_movies/src/common/widgets/custom_list_view_movies.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,11 +10,11 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   final HomeController moviesController = Get.find<HomeController>();
-
   static const homePage = '/';
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: CustomColors.background,
       body: SingleChildScrollView(
@@ -33,7 +32,9 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: Get.height * 0.45,
-                    child: PopularMovies(),
+                    child: CustomListViewMovies(
+                        movies:
+                            moviesController.popularMovies),
                   ),
                   Text(
                     'Top filmes',
@@ -41,7 +42,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: Get.height * 0.45,
-                    child: TopMovies(),
+                    child: CustomListViewMovies(movies: moviesController.topMovies),
                   ),
                 ],
               ),
@@ -53,6 +54,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
