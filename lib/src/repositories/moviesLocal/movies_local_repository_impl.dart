@@ -12,4 +12,20 @@ class MoviesLocalRepositoryImpl implements MoviesLocalRepository {
   Future postMoviesLocal({required Map<String, dynamic> data}) async {
     await dioClient.postData(url: Urls.urlLocal, data: data);
   }
+  
+  @override
+  Future getFavoritesMovies() async {
+   final favoriteMovies =
+        await dioClient.getData(url:  Urls.urlLocal);
+
+    if (customException.responseIsValid(favoriteMovies) == false) {
+      return [];
+    } else {
+      if (favoriteMovies.data != null) {
+        return favoriteMovies.data;
+      } else {
+        return [];
+      }
+    }
+  }
 }

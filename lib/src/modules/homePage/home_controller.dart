@@ -11,15 +11,19 @@ class HomeController extends GetxController {
   final _moviesLocalRepository = Get.find<MoviesLocalRepositoryImpl>();
 
   @override
+  void onInit() {
+    super.onInit();
+    searchPopularMovies();
+    searchTopMovies();
+  }
+
+  @override
   void onReady() async {
     Get.snackbar(
       'Bem-vindo!!!',
       'Carregando...',
       icon: const Icon(Icons.cached_outlined),
     );
-
-    searchPopularMovies();
-    searchTopMovies();
     super.onReady();
   }
 
@@ -74,7 +78,7 @@ class HomeController extends GetxController {
     }
   }
 
-  Future postMoviesLocal({required Map <String, dynamic> data}) async {
+  Future postMoviesLocal({required Map<String, dynamic> data}) async {
     try {
       _moviesLocalRepository.postMoviesLocal(data: data);
 

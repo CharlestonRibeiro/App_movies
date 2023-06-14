@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/ulrs/ulrs.dart';
 import 'package:api_movies/src/models/movies_model.dart';
@@ -16,11 +18,14 @@ class CustomListViewMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final moviesLocalRepository = Get.find<MoviesLocalRepositoryImpl>();
+
     return Obx(() {
       return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
         itemBuilder: (context, index) {
+          final url = Urls.baseImage + movies[index].posterPath;
+          log(url);
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Stack(
@@ -73,17 +78,20 @@ class CustomListViewMovies extends StatelessWidget {
                                 data: {
                                   'id': movies[index].id,
                                   'title': movies[index].title,
-                                  'favorite': true,
+                                  'release_date': movies[index].releaseDate,
+                                  'poster_path': movies[index].posterPath,
                                   'genre_ids': movies[index].genres,
-                                  'posterPath': movies[index].posterPath,
-                                  'releaseDate': movies[index].releaseDate,
+                                  'favorite': true,                               
+                                  
+                                  
                                 },
                               ),
                           icon: Icon(
                             Icons.favorite_outlined,
-                            color: movies[index].favorite == true
-                                ? CustomColors.primary
-                                : CustomColors.gray,
+                            color: CustomColors.gray,
+                            // moviesFavorite.favoriteMovies[index].favorite == true
+                            //     ? CustomColors.primary
+                            //     : CustomColors.gray,
                           )),
                     ),
                   ),
