@@ -20,24 +20,28 @@ class FavoriteMoviesPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: CustomColors.background,
+      appBar: AppBar(
+        backgroundColor: CustomColors.backgroundAppBar,
+         automaticallyImplyLeading: false,
+        title: Center(
+          child: Text(
+            'Meus favoritos',
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.45,
-              child: CustomListViewGenres(
-                  genresList: favoriteMoviesController.genres),
-            ),
-            Text(
-              'Filmes Favoritos',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            SizedBox(
-              height: Get.height * 0.45,
-              child: CustomListViewMovies(
-                  movies: favoriteMoviesController.favoriteMovies),
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height * 0.45,
+                child: CustomListViewMovies(
+                    movies: favoriteMoviesController.favoriteMovies),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),

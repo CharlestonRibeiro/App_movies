@@ -21,11 +21,13 @@ class CustomListViewMovies extends StatelessWidget {
 
     return Obx(() {
       return ListView.builder(
+        
         scrollDirection: Axis.horizontal,
+        
+
         itemCount: movies.length,
         itemBuilder: (context, index) {
-          final url = Urls.baseImage + movies[index].posterPath;
-          log(url);
+          
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Stack(

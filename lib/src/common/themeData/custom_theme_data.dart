@@ -7,6 +7,13 @@ ThemeData customThemeData() {
   return ThemeData(
     textTheme: TextTheme(
 
+      displaySmall: TextStyle(
+        fontFamily: 'Metrophobic',
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: CustomColors.black,
+      ),
+
       titleMedium: TextStyle(
         fontFamily: 'Metrophobic',
         fontSize: 14,
