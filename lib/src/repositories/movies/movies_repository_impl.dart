@@ -3,7 +3,7 @@ import 'package:api_movies/src/services/custom_exception.dart';
 import 'package:api_movies/src/services/dio_client.dart';
 import 'package:get/instance_manager.dart';
 
-import './movies_repository.dart';
+import 'movies_repository.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
   

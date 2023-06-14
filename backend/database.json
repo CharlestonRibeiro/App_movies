@@ -1,6 +1,40 @@
 {
     "favorites": [
-       
+        {
+            "id": 1,
+            "title": "Velozes & Furiosos 10",
+            "favorite": true,
+            "genre_ids": [
+                28,
+                80,
+                53
+            ],
+            "posterPath": "/nxrmpkwVdmiVAiRTqSSC2SateN2.jpg",
+            "releaseDate": "2023-05-17"
+        },
+        {
+            "id": 2,
+            "title": "Velozes & Furiosos 10",
+            "favorite": true,
+            "genre_ids": [
+                28,
+                80,
+                53
+            ],
+            "posterPath": "/nxrmpkwVdmiVAiRTqSSC2SateN2.jpg",
+            "releaseDate": "2023-05-17"
+        },
+        {
+            "id": 3,
+            "title": "John Wick 4: Baba Yaga",
+            "favorite": true,
+            "genre_ids": [
+                28,
+                53,
+                80
+            ],
+            "posterPath": "/rXTqhpkpj6E0YilQ49PK1SSqLhm.jpg",
+            "releaseDate": "2023-03-22"
+        }
     ]
-   
 }

@@ -12,4 +12,6 @@ class Urls {
   static String get baseImage => 'https://image.tmdb.org/t/p/original/';
 
   static String get urlGenres => 'https://api.themoviedb.org/3/genre/movie/list?api_key=77fcf345c0aaa5c563bb5ea8fe9102c6&language=pt-br';
+
+  static String get urlLocal => 'http://192.168.2.25:8081/favorites';
 }

@@ -1,11 +1,12 @@
+import 'dart:developer';
 import 'package:api_movies/src/services/custom_exception.dart';
 import 'package:api_movies/src/services/rest_client_interface.dart';
 import 'package:dio/dio.dart';
 
 class DioClient implements IRestClient {
- final Dio _dio = Dio();
+  final Dio _dio = Dio();
 
-   BaseOptions options = BaseOptions(
+  BaseOptions options = BaseOptions(
     headers: {
       'Content-Type': 'application/json',
     },
@@ -13,9 +14,23 @@ class DioClient implements IRestClient {
 
   @override
   Future getData({required String url}) async {
-     try {
+    try {
       final response = await _dio.get(url);
       return response;
+    } on DioError catch (e) {
+      throw CustomException(errorMessage: e.message);
+    }
+  }
+
+  @override
+  Future postData(
+      {required String url, required Map<String, dynamic> data}) async {
+    try {
+      await _dio.post(
+        url,
+        data: data,
+      );
+      log('POST OK');
     } on DioError catch (e) {
       throw CustomException(errorMessage: e.message);
     }

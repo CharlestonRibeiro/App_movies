@@ -22,6 +22,7 @@ class FavoriteMoviesPage extends StatelessWidget {
               child: CustomListViewGenres(
                   genresList: favoriteMoviesController.genres),
             ),
+            
           ],
         ),
       ),

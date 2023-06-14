@@ -1,5 +1,5 @@
 import 'package:api_movies/src/models/genres_model.dart';
-import 'package:api_movies/src/repositories/movies_repository_impl.dart';
+import 'package:api_movies/src/repositories/movies/movies_repository_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
