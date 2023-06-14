@@ -9,6 +9,6 @@ class FavoriteMoviesBindings implements Bindings {
     Get.put(MoviesLocalRepositoryImpl());
     Get.put(MoviesRepositoryImpl());
     Get.put(FavoriteMoviesController());
-    Get.put(FavoriteMoviesController().FavoriteMoviesBindings());
+    Get.put(FavoriteMoviesController().favoriteMovies());
   }
 }
