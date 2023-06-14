@@ -35,12 +35,6 @@ class HomeController extends GetxController {
           .toList();
       popularMovies.assignAll(popularMoviesList);
 
-      Get.snackbar(
-        'Filmes Populares',
-        'Carregado com sucesso!!!',
-        icon: const Icon(Icons.cached_outlined),
-        duration: const Duration(seconds: 3),
-      );
     } catch (e) {
       Get.snackbar(
         'Filmes Populares',
@@ -60,13 +54,7 @@ class HomeController extends GetxController {
           .toList();
 
       topMovies.assignAll(topMoviesList);
-
-      Get.snackbar(
-        'Top Filmes',
-        'Carregado com sucesso!!!',
-        icon: const Icon(Icons.cached_outlined),
-        duration: const Duration(seconds: 3),
-      );
+      
     } catch (e) {
       Get.snackbar(
         'Filmes Populares',

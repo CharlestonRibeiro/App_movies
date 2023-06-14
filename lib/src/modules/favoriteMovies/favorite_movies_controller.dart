@@ -17,7 +17,7 @@ class FavoriteMoviesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-   
+    searchFavoritesMovies();
     searchGenres();
   }
 
@@ -28,7 +28,6 @@ class FavoriteMoviesController extends GetxController {
       'Carregando...',
       icon: const Icon(Icons.cached_outlined),
     );
-    searchFavoritesMovies();
     super.onReady();
   }
 
@@ -44,12 +43,6 @@ class FavoriteMoviesController extends GetxController {
 
       log(favoritesMoviesList.toString());
 
-      Get.snackbar(
-        'Filmes Favoritos',
-        'Carregado com sucesso!!!',
-        icon: const Icon(Icons.cached_outlined),
-        duration: const Duration(seconds: 3),
-      );
     } catch (e) {
       Get.snackbar(
         'Filmes Favoritos',
@@ -71,12 +64,6 @@ class FavoriteMoviesController extends GetxController {
 
       genres.assignAll(geresList);
 
-      Get.snackbar(
-        'Filtros',
-        'Carregado com sucesso!!!',
-        icon: const Icon(Icons.cached_outlined),
-        duration: const Duration(seconds: 3),
-      );
     } catch (e) {
       Get.snackbar(
         'Filtros',

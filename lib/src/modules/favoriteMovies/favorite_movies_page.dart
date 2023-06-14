@@ -7,38 +7,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FavoriteMoviesPage extends StatelessWidget {
-  FavoriteMoviesPage({super.key});
-
-  final FavoriteMoviesController favoriteMoviesController =
-      Get.find<FavoriteMoviesController>();
-
+  const FavoriteMoviesPage({super.key});
 
   static const favoriteMoviesPage = '/FavoriteMoviesPage';
 
   @override
   Widget build(BuildContext context) {
+    final FavoriteMoviesController favoriteMoviesController =
+        Get.find<FavoriteMoviesController>();
+
+    favoriteMoviesController.favoriteMovies();
+
     return Scaffold(
       backgroundColor: CustomColors.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
             SizedBox(
               height: Get.height * 0.45,
               child: CustomListViewGenres(
                   genresList: favoriteMoviesController.genres),
             ),
-
-               Text(
-                    'Filmes Favoritos',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-
+            Text(
+              'Filmes Favoritos',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             SizedBox(
               height: Get.height * 0.45,
-              child: CustomListViewMovies(movies: favoriteMoviesController.favoriteMovies)
-            ),
-
+              child: CustomListViewMovies(
+                  movies: favoriteMoviesController.favoriteMovies),
+            )
           ],
         ),
       ),
