@@ -14,8 +14,8 @@ class AppMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
 
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
+     //  locale: DevicePreview.locale(context),
+     //  builder: DevicePreview.appBuilder,
 
       title: 'AppMovies',
       debugShowCheckedModeBanner: false,

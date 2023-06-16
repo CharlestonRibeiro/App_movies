@@ -1,7 +1,7 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/widgets/custom_app_bar.dart';
 import 'package:api_movies/src/common/widgets/custom_bottom_navigation_bar.dart';
-import 'package:api_movies/src/common/widgets/custom_list_view_movies.dart';
+import 'package:api_movies/src/modules/homePage/components/custom_list_view_movies.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
