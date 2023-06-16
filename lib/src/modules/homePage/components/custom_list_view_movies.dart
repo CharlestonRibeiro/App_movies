@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/ulrs/ulrs.dart';
 import 'package:api_movies/src/models/movies_model.dart';
