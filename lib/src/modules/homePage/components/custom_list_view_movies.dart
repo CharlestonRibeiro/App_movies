@@ -82,24 +82,41 @@ class CustomListViewMovies extends StatelessWidget {
                         child: IconButton(
                             iconSize: Get.height * 0.02,
                             onPressed: () {
-                              moviesLocalRepository.postMoviesLocal(
-                                data: {
-                                  'id': movies[index].id,
-                                  'title': movies[index].title,
-                                  'release_date': movies[index].releaseDate,
-                                  'poster_path': movies[index].posterPath,
-                                  'genre_ids': movies[index].genres,
-                                  'favorite': true,
-                                },
-                              );
+                              if (!listTitle.contains(movies[index].title)) {
+                                moviesLocalRepository.postMoviesLocal(
+                                  data: {
+                                    'id': movies[index].id,
+                                    'title': movies[index].title,
+                                    'release_date': movies[index].releaseDate,
+                                    'poster_path': movies[index].posterPath,
+                                    'genre_ids': movies[index].genres,
+                                    'favorite': true,
+                                  },
+                                );
+                                Get.snackbar(
+                                  'Filmes favoritos',
+                                  '${movies[index].title} adicionado!!!' ,
+                                  snackPosition: SnackPosition.TOP,
+                                  icon: const Icon(Icons.cached_outlined),
+                                  duration: const Duration(seconds: 3),
+                                );
+                              } else {
+                                Get.snackbar(
+                                  'Filmes favoritos',
+                                  'Erro, ${movies[index].title}Já foi adicionado' ,
+                                  snackPosition: SnackPosition.TOP,
+                                  icon: const Icon(Icons.cached_outlined),
+                                  duration: const Duration(seconds: 3),
+                                );
+                              }
+
                               favoriteMoviesController.searchFavoritesMovies();
                             },
                             icon: Icon(
                               Icons.favorite_outlined,
-                              color: //CustomColors.gray,
-                                  listTitle.contains(movies[index].title)
-                                      ? CustomColors.primary
-                                      : CustomColors.gray,
+                              color: listTitle.contains(movies[index].title)
+                                  ? CustomColors.primary
+                                  : CustomColors.gray,
                             )),
                       ),
                     ),
