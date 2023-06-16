@@ -19,13 +19,9 @@ class CustomListViewMovies extends StatelessWidget {
 
     return Obx(() {
       return ListView.builder(
-        
         scrollDirection: Axis.horizontal,
-        
-
         itemCount: movies.length,
         itemBuilder: (context, index) {
-          
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Stack(
@@ -63,8 +59,10 @@ class CustomListViewMovies extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                  bottom: 82,
-                  right: 20,
+                  bottom: Get.height * 0.12,
+                  right: Get.width * 0.05,
+                  // bottom: 82,
+                  // right: 20,
                   child: Material(
                     elevation: 5,
                     shape: const CircleBorder(),
@@ -81,9 +79,7 @@ class CustomListViewMovies extends StatelessWidget {
                                   'release_date': movies[index].releaseDate,
                                   'poster_path': movies[index].posterPath,
                                   'genre_ids': movies[index].genres,
-                                  'favorite': true,                               
-                                  
-                                  
+                                  'favorite': true,
                                 },
                               ),
                           icon: Icon(
