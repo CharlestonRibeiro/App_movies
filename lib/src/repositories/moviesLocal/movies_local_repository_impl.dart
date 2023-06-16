@@ -12,11 +12,10 @@ class MoviesLocalRepositoryImpl implements MoviesLocalRepository {
   Future postMoviesLocal({required Map<String, dynamic> data}) async {
     await dioClient.postData(url: Urls.urlLocal, data: data);
   }
-  
+
   @override
   Future getFavoritesMovies() async {
-   final favoriteMovies =
-        await dioClient.getData(url:  Urls.urlLocal);
+    final favoriteMovies = await dioClient.getData(url: Urls.urlLocal);
 
     if (customException.responseIsValid(favoriteMovies) == false) {
       return [];
@@ -27,5 +26,11 @@ class MoviesLocalRepositoryImpl implements MoviesLocalRepository {
         return [];
       }
     }
+  }
+
+  @override
+  Future deleteFavoritesMovies({required num id}) async {
+    final urlDelete = '${Urls.urlLocal}/$id';
+    await dioClient.deleteData(url: urlDelete);
   }
 }

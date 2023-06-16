@@ -19,7 +19,6 @@ class FavoriteMoviesController extends GetxController {
     super.onInit();
     searchFavoritesMovies();
     searchGenres();
-  
   }
 
   @override
@@ -54,6 +53,27 @@ class FavoriteMoviesController extends GetxController {
     }
   }
 
+  Future deleteFavoritesMovies({required id}) async {
+    try {
+      await _moviesLocalRepository.deleteFavoritesMovies(id: id);
+       Get.snackbar(
+        'Filmes Favoritos',
+        'Filmes restirado da lista com sucesso!!!',
+        snackPosition: SnackPosition.TOP,
+        icon: const Icon(Icons.cached_outlined),
+        duration: const Duration(seconds: 3),
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Filmes Favoritos',
+        'Erro Delete',
+        snackPosition: SnackPosition.TOP,
+        icon: const Icon(Icons.cached_outlined),
+        duration: const Duration(seconds: 3),
+      );
+    }
+  }
+
   Future searchGenres() async {
     try {
       final genresData = await _moviesRepository.getGenres();
@@ -73,6 +93,4 @@ class FavoriteMoviesController extends GetxController {
       );
     }
   }
-
-
 }

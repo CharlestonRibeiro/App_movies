@@ -1,6 +1,7 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/ulrs/ulrs.dart';
 import 'package:api_movies/src/models/movies_model.dart';
+import 'package:api_movies/src/modules/favoriteMovies/favorite_movies_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,9 @@ class BuildMovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FavoriteMoviesController favoriteMoviesController =
+        Get.find<FavoriteMoviesController>();
+
     return SizedBox(
       height: Get.height * 0.45,
       width: Get.width * 0.31,
@@ -55,8 +59,6 @@ class BuildMovieItem extends StatelessWidget {
           Positioned(
             bottom: Get.height * 0.10,
             right: Get.width * 0.11,
-            // bottom: 74,
-            // right: 46,
             child: Material(
               elevation: 5,
               shape: const CircleBorder(),
@@ -65,10 +67,14 @@ class BuildMovieItem extends StatelessWidget {
                 height: Get.height * 0.04,
                 child: IconButton(
                   iconSize: Get.height * 0.02,
-                  onPressed: () {},
+                  onPressed: () {
+                    favoriteMoviesController.deleteFavoritesMovies(
+                        id: movie.id);
+                    favoriteMoviesController.searchFavoritesMovies();
+                  },
                   icon: Icon(
                     Icons.favorite_outlined,
-                    color: CustomColors.gray,
+                    color: CustomColors.primary,
                   ),
                 ),
               ),

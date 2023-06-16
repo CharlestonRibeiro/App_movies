@@ -16,6 +16,7 @@ class DioClient implements IRestClient {
   Future getData({required String url}) async {
     try {
       final response = await _dio.get(url);
+      log('GET OK');
       return response;
     } on DioError catch (e) {
       throw CustomException(errorMessage: e.message);
@@ -31,6 +32,16 @@ class DioClient implements IRestClient {
         data: data,
       );
       log('POST OK');
+    } on DioError catch (e) {
+      throw CustomException(errorMessage: e.message);
+    }
+  }
+  
+  @override
+  Future deleteData({required String url}) async {
+       try {
+      await _dio.delete(url);
+      log('delete OK');
     } on DioError catch (e) {
       throw CustomException(errorMessage: e.message);
     }

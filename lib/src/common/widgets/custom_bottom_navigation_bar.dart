@@ -46,8 +46,3 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
   }
 }
-
-
-//final favoriteMoviesController = Get.put(FavoriteMoviesController());
-
-// favoriteMoviesController.favoriteMovies();
