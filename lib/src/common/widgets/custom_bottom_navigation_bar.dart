@@ -1,4 +1,5 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
+import 'package:api_movies/src/modules/favoriteMovies/favorite_movies_controller.dart';
 import 'package:api_movies/src/modules/favoriteMovies/favorite_movies_page.dart';
 import 'package:api_movies/src/modules/homePage/home_controller.dart';
 import 'package:api_movies/src/modules/homePage/home_page.dart';
@@ -10,6 +11,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteMoviesController = Get.put(FavoriteMoviesController());
+
     return GetBuilder<HomeController>(
       builder: (controller) {
         final route = Get.routing.current;
@@ -34,6 +37,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             if (index == 0) {
               Get.toNamed(HomePage.homePage);
             } else if (index == 1) {
+              favoriteMoviesController.favoriteMovies();
               Get.toNamed(FavoriteMoviesPage.favoriteMoviesPage);
             }
           },
@@ -44,3 +48,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
 }
 
 
+//final favoriteMoviesController = Get.put(FavoriteMoviesController());
+
+// favoriteMoviesController.favoriteMovies();

@@ -10,18 +10,21 @@ class FavoriteMoviesPage extends StatelessWidget {
 
   static const favoriteMoviesPage = '/FavoriteMoviesPage';
 
+  // final FavoriteMoviesController favoriteMoviesController =
+  //      Get.put(FavoriteMoviesController());
+
   @override
   Widget build(BuildContext context) {
+    
     final FavoriteMoviesController favoriteMoviesController =
         Get.find<FavoriteMoviesController>();
 
-    favoriteMoviesController.favoriteMovies();
 
     return Scaffold(
       backgroundColor: CustomColors.background,
       appBar: AppBar(
         backgroundColor: CustomColors.backgroundAppBar,
-         automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             'Meus favoritos',
@@ -29,14 +32,9 @@ class FavoriteMoviesPage extends StatelessWidget {
           ),
         ),
       ),
-      body: CustomListViewFavoriteMovies(
-                      favoriteMovies: favoriteMoviesController.favoriteMovies),
-                
-            
-            
-        
-       
-    
+      body:CustomListViewFavoriteMovies(
+            favoriteMovies: favoriteMoviesController.favoriteMovies),
+      
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
