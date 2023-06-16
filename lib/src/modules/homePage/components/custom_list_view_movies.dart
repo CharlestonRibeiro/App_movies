@@ -24,75 +24,79 @@ class CustomListViewMovies extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: Get.height * 0.04,
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.network(
-                        Urls.baseImage + movies[index].posterPath,
-                        height: Get.height * 0.25,
-                        //  width: Get.width * 0.32,
-                        fit: BoxFit.fill,
+            child: SizedBox(
+              height: Get.height * 0.45,
+              width: Get.width * 0.32,
+              child: Stack(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.04,
                       ),
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    SizedBox(
-                      width: Get.width * 0.35,
-                      child: Text(
-                        movies[index].title,
-                        style: Theme.of(context).textTheme.titleMedium,
-                        softWrap: true,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.network(
+                          Urls.baseImage + movies[index].posterPath,
+                          height: Get.height * 0.25,
+                          //  width: Get.width * 0.32,
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
-                    Text(
-                      movies[index].releaseDate.substring(0, 4),
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                  ],
-                ),
-                Positioned(
-                  bottom: Get.height * 0.12,
-                  right: Get.width * 0.05,
-                  // bottom: 82,
-                  // right: 20,
-                  child: Material(
-                    elevation: 5,
-                    shape: const CircleBorder(),
-                    clipBehavior: Clip.antiAlias,
-                    child: SizedBox(
-                      height: Get.height * 0.04,
-                      child: IconButton(
-                          iconSize: Get.height * 0.02,
-                          onPressed: () =>
-                              moviesLocalRepository.postMoviesLocal(
-                                data: {
-                                  'id': movies[index].id,
-                                  'title': movies[index].title,
-                                  'release_date': movies[index].releaseDate,
-                                  'poster_path': movies[index].posterPath,
-                                  'genre_ids': movies[index].genres,
-                                  'favorite': true,
-                                },
-                              ),
-                          icon: Icon(
-                            Icons.favorite_outlined,
-                            color: CustomColors.gray,
-                            // moviesFavorite.favoriteMovies[index].favorite == true
-                            //     ? CustomColors.primary
-                            //     : CustomColors.gray,
-                          )),
-                    ),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      SizedBox(
+                        width: Get.width * 0.35,
+                        child: Text(
+                          movies[index].title,
+                          style: Theme.of(context).textTheme.titleMedium,
+                          softWrap: true,
+                        ),
+                      ),
+                      Text(
+                        movies[index].releaseDate.substring(0, 4),
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ],
                   ),
-                )
-              ],
+                  Positioned(
+                    bottom: Get.height * 0.12,
+                    right: Get.width * 0.01,
+                    // bottom: 82,
+                    // right: 20,
+                    child: Material(
+                      elevation: 5,
+                      shape: const CircleBorder(),
+                      clipBehavior: Clip.antiAlias,
+                      child: SizedBox(
+                        height: Get.height * 0.04,
+                        child: IconButton(
+                            iconSize: Get.height * 0.02,
+                            onPressed: () =>
+                                moviesLocalRepository.postMoviesLocal(
+                                  data: {
+                                    'id': movies[index].id,
+                                    'title': movies[index].title,
+                                    'release_date': movies[index].releaseDate,
+                                    'poster_path': movies[index].posterPath,
+                                    'genre_ids': movies[index].genres,
+                                    'favorite': true,
+                                  },
+                                ),
+                            icon: Icon(
+                              Icons.favorite_outlined,
+                              color: CustomColors.gray,
+                              // moviesFavorite.favoriteMovies[index].favorite == true
+                              //     ? CustomColors.primary
+                              //     : CustomColors.gray,
+                            )),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },
