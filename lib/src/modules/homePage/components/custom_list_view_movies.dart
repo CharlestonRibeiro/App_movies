@@ -1,6 +1,7 @@
 import 'package:api_movies/src/common/colors/custom_colors.dart';
 import 'package:api_movies/src/common/ulrs/ulrs.dart';
 import 'package:api_movies/src/models/movies_model.dart';
+import 'package:api_movies/src/modules/favoriteMovies/favorite_movies_controller.dart';
 import 'package:api_movies/src/repositories/moviesLocal/movies_local_repository_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,8 +17,14 @@ class CustomListViewMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final moviesLocalRepository = Get.find<MoviesLocalRepositoryImpl>();
+    final favoriteMoviesController = Get.put(FavoriteMoviesController());
+    final listTitle = [];
 
     return Obx(() {
+      for (var m in favoriteMoviesController.favoriteMovies) {
+        listTitle.add(m.title);
+      }
+
       return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
@@ -74,23 +81,25 @@ class CustomListViewMovies extends StatelessWidget {
                         height: Get.height * 0.04,
                         child: IconButton(
                             iconSize: Get.height * 0.02,
-                            onPressed: () =>
-                                moviesLocalRepository.postMoviesLocal(
-                                  data: {
-                                    'id': movies[index].id,
-                                    'title': movies[index].title,
-                                    'release_date': movies[index].releaseDate,
-                                    'poster_path': movies[index].posterPath,
-                                    'genre_ids': movies[index].genres,
-                                    'favorite': true,
-                                  },
-                                ),
+                            onPressed: () {
+                              moviesLocalRepository.postMoviesLocal(
+                                data: {
+                                  'id': movies[index].id,
+                                  'title': movies[index].title,
+                                  'release_date': movies[index].releaseDate,
+                                  'poster_path': movies[index].posterPath,
+                                  'genre_ids': movies[index].genres,
+                                  'favorite': true,
+                                },
+                              );
+                              favoriteMoviesController.searchFavoritesMovies();
+                            },
                             icon: Icon(
                               Icons.favorite_outlined,
-                              color: CustomColors.gray,
-                              // moviesFavorite.favoriteMovies[index].favorite == true
-                              //     ? CustomColors.primary
-                              //     : CustomColors.gray,
+                              color: //CustomColors.gray,
+                                  listTitle.contains(movies[index].title)
+                                      ? CustomColors.primary
+                                      : CustomColors.gray,
                             )),
                       ),
                     ),

@@ -19,6 +19,7 @@ class FavoriteMoviesController extends GetxController {
     super.onInit();
     searchFavoritesMovies();
     searchGenres();
+  
   }
 
   @override
@@ -42,7 +43,6 @@ class FavoriteMoviesController extends GetxController {
       favoriteMovies.assignAll(favoritesMoviesList);
 
       log(favoritesMoviesList.toString());
-
     } catch (e) {
       Get.snackbar(
         'Filmes Favoritos',
@@ -63,7 +63,6 @@ class FavoriteMoviesController extends GetxController {
           .toList();
 
       genres.assignAll(geresList);
-
     } catch (e) {
       Get.snackbar(
         'Filtros',
@@ -74,4 +73,6 @@ class FavoriteMoviesController extends GetxController {
       );
     }
   }
+
+
 }

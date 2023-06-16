@@ -37,7 +37,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             if (index == 0) {
               Get.toNamed(HomePage.homePage);
             } else if (index == 1) {
-              favoriteMoviesController.favoriteMovies();
+              favoriteMoviesController.searchFavoritesMovies();
               Get.toNamed(FavoriteMoviesPage.favoriteMoviesPage);
             }
           },
