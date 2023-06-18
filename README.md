@@ -1,16 +1,26 @@
-# api_movies
+# API movies
 
-A new Flutter project.
+## Descrição
 
-## Getting Started
+Desafio em Flutter, aplicativo que utilize uma API de filmes para exibir informações sobre diferentes filmes. Além disso, o desafio inclui implementar a funcionalidade de salvar filmes favoritos localmente. Isso envolve a integração da API, processamento dos dados e a criação de uma interface amigável.
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+<img src="https://github.com/CharlestonRibeiro/App_movies/blob/main/assets/images/imagesApp/Screenshot_1687115487.png" width="300" height="700" />
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<p align="center">
+<img src="https://github.com/CharlestonRibeiro/App_movies/blob/main/assets/images/imagesApp/Screenshot_1687115495.png" width="300" height="700" />
+<img src="https://github.com/CharlestonRibeiro/App_movies/blob/main/assets/images/imagesApp/Screenshot_1687115588.png" width="300" height="700" />
+</p>
+
+<p align="center">
+<img src="https://github.com/CharlestonRibeiro/App_movies/blob/main/assets/images/imagesApp/Screenshot_1687115609.png" width="300" height="700" />
+<img src="https://github.com/CharlestonRibeiro/App_movies/blob/main/assets/images/imagesApp/Screenshot_1687115605.png" width="300" height="700" />
+</p>
+
+
+</p>
